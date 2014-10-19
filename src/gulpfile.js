@@ -1,5 +1,6 @@
 "use strict";
 var gulp = require('gulp'),
+    favicons = require('favicons'),
     uncss = require('gulp-uncss'),
     autoprefixer = require('gulp-autoprefixer'),
     less = require('gulp-less'),
@@ -29,15 +30,22 @@ gulp.task('watch', ['webserver'], function () {
 gulp.task('css', function () {
   gulp.src('style.less')
     .pipe(less())
-    //.pipe(uncss({
-    //  html: ['./src/index.html'],
-    //  ignore: '.goodnight'
-    //}))
+    .pipe(uncss({
+      html: ['./index.html'],
+      ignore: /goodnight/
+    }))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest('.'));
+    .pipe(gulp.dest('src'));
+});
+
+gulp.task('icon', function () {
+  favicons({
+    source: 'logo.png',
+    dest: '../'
+  });
 });
 
 gulp.task('dist', function () {
