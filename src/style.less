@@ -1,0 +1,136 @@
+﻿// Variables
+@paysage: space, sky, horizon, subhorizon, subsubhorizon, farthestsea, farsea, closesea, closestsea;
+
+@space-color: #1c1034;
+@space-color-night: #2c3e50;
+@space-height: 12vh;
+
+@sky-color: #402941;
+@sky-color-night: #2c3e50;
+@sky-height: 6vh;
+
+@horizon-color: #cc333f;
+@horizon-color-night: #2c3e50;
+@horizon-height: 8vh;
+
+@subhorizon-color: #eb6841;
+@subhorizon-color-night: #2c3e50;
+@subhorizon-height: 8vh;
+
+@subsubhorizon-color: #edc951;
+@subsubhorizon-color-night: #2c3e50;
+@subsubhorizon-height: 7vh;
+
+@farthestsea-color: #1f669c;
+@farthestsea-color-night: lighten(@space-color-night, 5%);
+@farthestsea-height: 5vh;
+
+@farsea-color: lighten(@farthestsea-color, 15%);
+@farsea-color-night: lighten(@space-color-night, 15%);
+@farsea-height: 14vh;
+
+@closesea-color: lighten(@farthestsea-color, 30%);
+@closesea-color-night: lighten(@space-color-night, 22%);
+@closesea-height: 17vh;
+
+@closestsea-color: lighten(@farthestsea-color, 45%);
+@closestsea-color-night: lighten(@space-color-night, 30%);
+@closestsea-height: 23vh;
+
+@sun-color: #ffd800;
+@sun-color-night: lighten(@space-color-night, 70%);
+@sun-size: 28.75vh;
+
+@cloud-color: #fff;
+
+@transition-duration: 2s;
+
+// Body
+body {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+// Components
+.components(@list, @index: 1) when (@index < length(@list) + 1) {
+  .components(@list, (@index + 1));
+  @item: extract(@list, @index);
+
+  .@{item} {
+    @item-height: "@{item}-height";
+    @item-color: "@{item}-color";
+    @item-color-night: "@{item}-color-night";
+    width: 100%;
+    height: @@item-height;
+    background: @@item-color;
+    transition: background @transition-duration ease;
+
+    .goodnight & {
+      background: @@item-color-night;
+    }
+  }
+}
+
+.components(@paysage);
+
+.couch-sun {
+  overflow: hidden;
+  height: 23vh;
+}
+
+.relative() {
+  position: relative;
+  margin: 0 auto;
+}
+
+.sun-relative() {
+  .relative();
+  background: @sun-color;
+  transition: background @transition-duration ease;
+
+  .goodnight & {
+    background: @sun-color-night;
+  }
+}
+
+.sun {
+  .sun-relative();
+  width: @sun-size;
+  height: @sun-size;
+  border-radius: 50%;
+}
+
+.reflect {
+  .sun-relative();
+  top: -9vh;
+  width: 28vh;
+  height: 17vh;
+  opacity: .5;
+  transform: rotate(45deg) skew(35deg);
+}
+
+.cloud {
+  .relative();
+  top: -16vh;
+  left: -150px;
+  z-index: 10;
+  width: 20%;
+  height: 7vh;
+  background: #fff;
+  opacity: .7;
+  transform: skew(35deg);
+  transform-origin: bottom right;
+  animation: line 120s infinite ease;
+}
+
+@keyframes line {
+  0%, 100% {
+    transform: skew(35deg) translateX(0);
+  }
+
+  50% {
+    transform: skew(-35deg) translateX(300px);
+  }
+}

@@ -1,0 +1,4 @@
+exclude:
+  - src
+  - README.md
+  - LICENSE
