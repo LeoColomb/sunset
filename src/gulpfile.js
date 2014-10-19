@@ -52,7 +52,7 @@ gulp.task('dist', function () {
   gulp.src('index.html')
     .pipe(stripLine([
       '<link href="style.css" rel="stylesheet" />',
-      '<script src="goodnight.js"></script>'
+      '<script src="bower_components/goodnight/goodnight.js"></script>'
     ]))
     .pipe(inject(gulp.src(['style.css']), {
       name: 'style',
