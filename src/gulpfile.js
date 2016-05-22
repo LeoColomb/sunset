@@ -1,15 +1,14 @@
-"use strict";
-var gulp = require('gulp'),
-    favicons = require('favicons'),
-    uncss = require('gulp-uncss'),
-    autoprefixer = require('gulp-autoprefixer'),
-    less = require('gulp-less'),
-    webserver = require('gulp-webserver'),
-    htmlmin = require('gulp-htmlmin'),
-    bowerFiles = require('main-bower-files'),
-    inject = require('gulp-inject'),
-    stripLine = require('gulp-strip-line'),
-    livereload = require('gulp-livereload');
+'use strict';
+const gulp = require('gulp');
+const favicons = require('favicons');
+const autoprefixer = require('gulp-autoprefixer');
+const less = require('gulp-less');
+const webserver = require('gulp-webserver');
+const htmlmin = require('gulp-htmlmin');
+const bowerFiles = require('main-bower-files');
+const inject = require('gulp-inject');
+const stripLine = require('gulp-strip-line');
+const livereload = require('gulp-livereload');
 
 gulp.task('webserver', function () {
   gulp.src('.')
@@ -30,15 +29,11 @@ gulp.task('watch', ['webserver'], function () {
 gulp.task('css', function () {
   gulp.src('style.less')
     .pipe(less())
-    .pipe(uncss({
-      html: ['./index.html'],
-      ignore: /goodnight/
-    }))
     .pipe(autoprefixer({
       browsers: ['last 2 versions'],
       cascade: false
     }))
-    .pipe(gulp.dest('src'));
+    .pipe(gulp.dest('.'));
 });
 
 gulp.task('icon', function () {
@@ -54,7 +49,7 @@ gulp.task('dist', function () {
       '<link href="style.css" rel="stylesheet" />',
       '<script src="bower_components/goodnight/goodnight.js"></script>'
     ]))
-    .pipe(inject(gulp.src(['style.css']), {
+    .pipe(inject(gulp.src('style.css'), {
       name: 'style',
       transform: function (filePath, file) {
         return "<style>" + file.contents.toString('utf8') + "</style>";
