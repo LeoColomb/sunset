@@ -1,5 +1,5 @@
 {
-  "name": "coucher",
+  "name": "sunset",
   "version": "1.0.0",
   "authors": [
     "Léo Colombaro <git@colombaro.fr>"
@@ -7,7 +7,7 @@
   "description": "A pretty light Mediterranean sunset",
   "main": "index.html",
   "license": "MIT",
-  "homepage": "coucher.colombaro.fr",
+  "homepage": "sunset.colombaro.fr",
   "private": true,
   "dependencies": {
     "goodnight": "~0.1.3"
