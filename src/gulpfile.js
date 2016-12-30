@@ -83,5 +83,5 @@ gulp.task('dist', function () {
       minifyJS: true,
       minifyCSS: true
     }))
-    .pipe(gulp.dest('..'));
+    .pipe(gulp.dest('../docs'));
 });
