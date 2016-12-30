@@ -22,4 +22,4 @@ Features
 License
 -------
 
-MIT - Léo Colombaro - 2014
+MIT - Léo Colombaro
