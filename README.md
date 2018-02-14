@@ -2,11 +2,11 @@
   <img src="thumb.png">
 </p>
 
-# [Sunset](http://sunset.colombaro.fr)
+# [Sunset](https://sunset.colombaro.fr)
 
 > A pretty light Mediterranean sunset
 
-This is my own browser homepage.
+Live at [sunset.colombaro.fr](https://sunset.colombaro.fr). This is my own browser homepage.
 
 ## Features
 
