@@ -1,25 +1,20 @@
-[Sunset](http://sunset.colombaro.fr)
-========
+<p align=center>
+  <img src="thumb.png">
+</p>
 
-__A pretty light Mediterranean sunset__
+# [Sunset](http://sunset.colombaro.fr)
 
-Goal
-----
-_This is my own browser homepage._
+> A pretty light Mediterranean sunset
 
-It checks:
-* The Internet connection (loads so faster that I know instantly)
-* The time (it comes a moonrise when the night is here)
+This is my own browser homepage.
 
-Features
---------
+## Features
 
 * Fully HTML5/CSS3
 * Fully responsive
-* Small size, fast load
-* Style written in LESS
+* Small size, load fast
+* Moonrise when the real night is comming
 
-License
--------
+## License
 
-MIT - Léo Colombaro
+MIT © Léo Colombaro
