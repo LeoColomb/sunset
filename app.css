@@ -1,0 +1,154 @@
+/**
+ * Sunset
+ *
+ * @author Léo Colombaro (colombaro.fr)
+ * @license MIT
+ */
+
+/* App */
+
+html,
+body {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: [left] 1fr [container] 30vh 1fr [right];
+  grid-template-rows:
+    [space] 1fr
+    [sky] 6%
+    [horizon] 8%
+    [sub-horizon] 8%
+    [sub-sub-horizon] 7%
+    [farthest-sea] 5%
+    [far-sea] 14%
+    [close-sea] 17%
+    [closest-sea] 2fr;
+}
+
+div {
+  grid-column: left / right;
+  grid-row: var(--name);
+  background: var(--color);
+  transition: background 2s ease;
+}
+
+.goodnight div {
+  background: var(--color-night);
+}
+
+/* Earth */
+
+.space {
+  --name: space;
+  --color: #1c1034;
+  --color-night: #2c3e50;
+}
+
+.sky {
+  --name: sky;
+  --color: #402941;
+  --color-night: #2c3e50;
+}
+
+.horizon {
+  --name: horizon;
+  --color: #cc333f;
+  --color-night: #2c3e50;
+}
+
+.sub-horizon {
+  --name: sub-horizon;
+  --color: #eb6841;
+  --color-night: #2c3e50;
+}
+
+.sub-sub-horizon {
+  --name: sub-sub-horizon;
+  --color: #edc951;
+  --color-night: #2c3e50;
+}
+
+.farthest-sea {
+  --name: farthest-sea;
+  --color: #1f669c;
+  --color-night: #354b60;
+}
+
+.far-sea {
+  --name: far-sea;
+  --color: #318fd6;
+  --color-night: #476481;
+}
+
+.close-sea {
+  --name: close-sea;
+  --color: #71b2e3;
+  --color-night: #547698;
+}
+
+.closest-sea {
+  --name: closest-sea;
+  --color: #b1d5f0;
+  --color-night: #698aac;
+}
+
+[class$="sea"] {
+  z-index: 20;
+}
+
+/* Sun */
+
+.sun {
+  --color: #ffd800;
+  --color-night: #ecf1f5;
+  grid-column: container;
+  grid-row: horizon / span farthest-sea;
+  height: 30vh;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.reflect {
+  --color: #ffd800;
+  --color-night: #ecf1f5;
+  grid-column: container;
+  grid-row: farthest-sea / span close-sea;
+  height: 18vh;
+  opacity: .5;
+  z-index: 60;
+  margin: 0 5.7vh;
+  transform: translateY(-9vh) skew(45deg) rotate(43deg);
+}
+
+/* Cloud */
+
+.cloud {
+  --color: #fff;
+  --color-night: #fff;
+  grid-column: container;
+  grid-row: sub-horizon / span farthest-sea;
+  margin: 5vh 0;
+  opacity: 0.7;
+  z-index: 99;
+  transform: skew(35deg);
+  transform-origin: bottom right;
+  animation: cloud 120s infinite ease;
+}
+
+@keyframes cloud {
+  0%, 100% {
+    transform: skew(35deg) translateX(-50%);
+  }
+
+  50% {
+    transform: skew(-35deg) translateX(50%);
+  }
+}
