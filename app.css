@@ -140,15 +140,15 @@ div {
   z-index: 99;
   transform: skew(35deg);
   transform-origin: bottom right;
-  animation: cloud 120s infinite ease;
+  animation: cloud 120s infinite alternate ease-in-out;
 }
 
 @keyframes cloud {
-  0%, 100% {
-    transform: skew(35deg) translateX(-50%);
+  from {
+    transform: skew(35deg) translateX(-60%);
   }
 
-  50% {
-    transform: skew(-35deg) translateX(50%);
+  to {
+    transform: skew(-35deg) translateX(60%);
   }
 }
